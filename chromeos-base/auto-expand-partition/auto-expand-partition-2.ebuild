@@ -1,6 +1,7 @@
-EAPI=4
+# Copyright (c) 2017 Flint Innovations Limited. All rights reserved.
+# Distributed under the terms of the GNU General Public License v2
 
-inherit udev
+EAPI=4
 
 DESCRIPTION="Auto expand stateful partition on first boot"
 
