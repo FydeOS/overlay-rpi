@@ -1,0 +1,5 @@
+# Make the /dev/uhid device only accessible by the Bluetooth daemon.
+# TODO(keybuk): If additional daemons (WiFi Direct?) provide HID transport
+# we may want to assign a group for this instead; do not use input since xorg
+# is a member of that group.
+KERNEL=="uhid", OWNER="bluetooth", MODE="0600"
