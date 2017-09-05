@@ -1,0 +1,14 @@
+diff --git a/Makefile b/Makefile
+index 1758444..c174d4b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -26,6 +26,9 @@ endif
+ ifdef DRV_ROCKCHIP
+ 	CFLAGS += $(shell $(PKG_CONFIG) --cflags libdrm_rockchip)
+ endif
++ifdef DRV_VC4
++	CFLAGS += $(shell $(PKG_CONFIG) --cflags libdrm_vc4)
++endif
+ 
+ CPPFLAGS += $(PC_CFLAGS)
+ LDLIBS += $(PC_LIBS)
