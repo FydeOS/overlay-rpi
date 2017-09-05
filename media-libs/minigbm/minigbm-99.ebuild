@@ -6,7 +6,7 @@ CROS_WORKON_COMMIT="e2b3a0605aee0d9bde24c8167a5adeea1975a869"
 CROS_WORKON_TREE="d57c7fbb2c88b4b25d4ea09d3d77b35d76dd5a48"
 CROS_WORKON_PROJECT="chromiumos/platform/minigbm"
 CROS_WORKON_LOCALNAME="../platform/minigbm"
-CROS_WORKON_OUTOFTREE_BUILD=1
+CROS_WORKON_OUTOFTREE_BUILD=0
 CROS_WORKON_INCREMENTAL_BUILD=1
 
 inherit cros-constants cros-workon toolchain-funcs
