@@ -4,7 +4,8 @@
 - [Table of contents](#table-of-contents)
 - [Introduction](#introduction)
     - [About this repository](#about-this-repository)
-    - [Goal of this repository](#goal-of-this-repository)
+        - [Branches in this repository](#branches-in-this-repository)
+        - [Goal of this repository](#goal-of-this-repository)
     - [Typography Conventions](#typography-conventions)
 - [System requirement](#system-requirement)
 - [Prepare the system](#prepare-the-system)
@@ -42,14 +43,23 @@
 # Introduction
 This document describes how to build and run Google Chromium OS on Raspberry Pi, from its source code and the board overlay hosted in this repository.
 
-This overlay can be used to build a Chromium OS image with Xorg/X11 as the graphics stack. As Google moved off from X since Chrome OS release 57, this overlay targets and was tested against the release 56 of Chromium OS.
-
 This overlay and the document has been tested against Raspberry Pi 3 by the Flint team. It may also work on Pi 2 but is not tested, you are welcome to test it and send feedback.
 
 ## About this repository
 The code and document in this repository is the result of works by the people of the Flint team. We previously worked on this overlay internally and released a few disk images for Raspberry Pi to the public. Now we open this to the public.
 
-## Goal of this repository
+### Branches in this repository
+There was a big change regarding the graphics stack in Chrome OS. Before release 57, Xorg/X11 was used. Beginning from release 57, Chrome OS moved to the Freon graphics stack, which is a modern display system developed solely for Chrome OS by Google.
+
+There are currently two branches in this repository, x11 and master, for these two different graphics systems.
+
+* x11 - This branch can be used to build a Chromium OS image with Xorg/X11 as the graphics stack. As Google moved off from X since Chrome OS release 57, this overlay targets and was tested against the release 56 of Chromium OS.
+
+* master - this branch can be used to build a Chromium OS image with Freon as the graphics stack. It has been tested against release 59 & 60. You are welcome to test it with future releases and send feedback and/or PRs.
+
+The build processes of these two branches on different Chromium OS releases are almost identical. Major differences are regarding which Chromium OS release version code to fetch and local directory to store them. It is mentioned in this document at appropriate steps.
+
+### Goal of this repository
 * To provide a open source code base that everybody can use to build and improve Chromium OS for Raspberry Pi.
 * To make as less change to the original Chromium OS code and process as possible, so that people can study and get used to the Chromium OS development process. We may provide scripts later to ease the process.
 
@@ -124,18 +134,33 @@ $ git config --global user.name "Your Name"
 The directory structure described here is a recommendation based on the best practice in the Flint team. You may host the files in a different way as you wish.
 
 ```
-$ mkdir -p /project/chromiumos-R56      # This is the directory to hold Chromium OS source code.
+$ mkdir -p /project/chromiumos-R56      # This is the directory to hold Chromium OS source code, name it according to the release you are going to build.
 $ mkdir -p /project/overlays            # This is the directory to hold this repository.
 ```
 
+If you are building a different release, make sure you use the actual directory name on your own system, the name here mentioned is just an example.
+
 ## Fetch Chromium OS source code
-Fetching of Chromium OS source code may take 10 to more than 30 minutes depends on your connection speed.
+
+First you need to find out the reference name of the release you would like to build.
+
+```
+$ git ls-remote https://chromium.googlesource.com/a/chromiumos/manifest.git | grep release
+```
+
+You will see a list of Git commit IDs and its name in the form of ```refs/heads/release-Rxx-xxxx.B```. That ```release-Rxx-XXXX.B``` string is what you need for fetching the code of that specific Chromium OS release. For example, ```release-R56-9000.B``` for release 56.
+
+Now run these commands to fetch the source code. Find and use a different release name if you would like to build a different release.
 
 ```
 $ cd /project/chromiumos-R56
 $ repo init -u https://chromium.googlesource.com/chromiumos/manifest.git --repo-url https://chromium.googlesource.com/external/repo.git -b release-R56-9000.B
 $ repo sync -j8         # Raise this number if you have a fast Internet connection
 ```
+
+Fetching of Chromium OS source code may take 10 to more than 30 minutes depends on your connection speed.
+
+**Note: you need to use different branches of this overlay to build different Chromium OS releases. See above [Branches in this repository](#branches-in-this-repository) section for detail.**
 
 ## Request for Google API key
 If you would like to login into the Chromium OS GUI by using your Google ID, you will need to request for Google API key and include them in the disk image you build. Since the only authentication mechanism included in Chromium OS is Google ID, you probably will need this or you will only be able to login as guest user.
