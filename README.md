@@ -86,7 +86,7 @@ Shell commands running in the Chromium OS chroot environment are prefixed with `
 
   * Network: total source code downloading will be over 10GB. A fast and stable Internet access is going to be very helpful.
 
-* A x86_64 Linux OS, it is called as the host OS later in this doc. The Chromium OS build process utilizes chroot to isolate the build environment from the host OS. So theoretically any modern Linux system should work. However, only limited Linux distros are tested by the Chromium OS team and the Flint team. Linux versions that are known to work:
+* A x86_64 Linux OS, it is called as the host OS later in this doc. The Chromium OS build process utilizes chroot to isolate the build environment from the host OS. So theoretically any modern Linux system should work. However, only limited Linux distros are tested by the Chromium OS team and the Fyde team. Linux versions that are known to work:
 
   * Ubuntu Linux 14.04 & 16.04
   * Gentoo Linux
@@ -131,7 +131,7 @@ $ git config --global user.name "Your Name"
 # Get Chromium OS source code
 
 ## Create directory structure
-The directory structure described here is a recommendation based on the best practice in the Flint team. You may host the files in a different way as you wish.
+The directory structure described here is a recommendation based on the best practice in the Fyde team. You may host the files in a different way as you wish.
 
 ```
 $ mkdir -p /project/chromiumos-R56      # This is the directory to hold Chromium OS source code, name it according to the release you are going to build.
@@ -180,7 +180,7 @@ Now fetch this overlay and put it in the right place.
 
 ```
 $ cd /project/overlays
-$ git clone https://github.com/flintinnovations/overlay-rpi.git
+$ git clone https://github.com/fydeos/overlay-rpi.git
 
 $ cd /project/chromiumos-R56/src/overlays
 $ ln -s /project/overlays/overlay-rpi .
@@ -379,14 +379,12 @@ After the disk image is successfully written to the SD card, plug it into the Ra
 # More information
 [Chromium OS Developer Guide](http://www.chromium.org/chromium-os/developer-guide). This is the official source of how to build Chromium OS
 
-[The Flint OS website, English site](https://flintos.io), our home :)
+[The FydeOS website, English site](https://fydeos.io), our home :)
 
-[The Flint OS website, Chinese site](https://flintos.com), our home, in Chinese.
+[The FydeOS website, Chinese site](https://fydeos.com), our home, in Chinese.
 
 
 # About us
-We are a UK/China based technology start-up. We have offices in both London and Beijing at the moment and are looking to expand to the city of Shenzhen. The team of 3 founders have spent many years in technology, consulting and media industries and gained valuable experiences of how things work. We have also witnessed the trend of digital transformation and the disruption it has caused to businesses and individuals. Realizing there is the lack of simple, secure and reliable “IT-as-a-Service” offerings for businesses, schools and individuals, we decided to come together and founded Flint.
+Fyde began with a vision where all applications and services we use today will be living in the Cloud. We believed that with the ever advancing browser platform technology and web frontend performances, it’s not surprising that most things we do today with the internet can be done through a single browser window. We are stepping into an era where installable apps will soon become history. FydeOS is our answer to this new era for computing.
 
-Flint began with a vision where all applications and services we use today will be living in the Cloud. With the ever advancing browser platform technology and web frontend performances, it’s not surprising that most things we do today with the internet can be done through a single browser window. We are stepping into an era where installable apps will soon become history.
-
-Therefore, we built Flint OS - a simple, secure, fast and productive operating system. Based on the open-source Chromium Project that also powers the well-known Google Chromebooks. Flint OS inherits most of the benefits that Chromebooks have but also bundled with our enhancements and new features. We have turned Flint OS into a more open platform, users will no longer be forced to rely on Google services and have the freedom to choose whichever services they prefer. We have also made Flint OS run on a wider range of hardware platforms ranging from x86 PCs and ARM based single board computers, providing endless of possibilities and potentials of how Flint OS can be used and applied.
+FydeOS is a simple, secure, fast and productive operating system. Based on the open-source Chromium Project that also powers the well-known Google Chromebooks. FydeOS inherits most of the benefits that Chromebooks have but also bundled with our enhancements and new features. We have turned FydeOS into a more open platform, users will no longer be forced to rely on Google services and have the freedom to choose whichever services they prefer. We have also made FydeOS run on a wider range of hardware platforms ranging from x86 PCs and ARM based single board computers, providing endless of possibilities and potentials of how FydeOS can be used and applied.
